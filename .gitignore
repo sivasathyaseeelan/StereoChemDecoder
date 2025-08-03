@@ -1,0 +1,52 @@
+# Python-specific
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+env/
+.venv/
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+*.whl
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS and temporary files
+.DS_Store
+*.swp
+*.bak
+*.tmp
+
+# Testing and coverage
+.coverage
+coverage.xml
+*.cover
+.pytest_cache/
+
+# Notebooks and logs
+*.ipynb
+*.log
+
+# Documentation build artifacts
+docs/_build/
+docs/build/
+
+# RDKit-related build artifacts
+*.so
+*.dylib
+*.dll
+
+# Miscellaneous
+*.bak
+*.cache
+*.swp
