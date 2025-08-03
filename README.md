@@ -8,6 +8,7 @@ Install the package using pip (RDKit must be installed separately):
 pip install StereoChemDecoder
 ```
 
+### Usage
 ```python
 from StereoChemDecoder import StereoChemDecoder
 
