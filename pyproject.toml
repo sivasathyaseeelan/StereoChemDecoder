@@ -1,5 +1,5 @@
 [project]
-name = "StereochemDecoder"
+name = "StereoChemDecoder"
 version = "0.1.0"
 description = "A Python package to detect chiral centers and E/Z double bonds in SMILES strings."
 readme = "README.md"

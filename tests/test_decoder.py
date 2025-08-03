@@ -1,5 +1,5 @@
 import statistics
-from StereochemDecoder import StereochemDecoder
+from StereoChemDecoder import StereoChemDecoder
 
 def main():
     smiles_list = [
@@ -266,7 +266,7 @@ def main():
     results = []
     invalid_smiles = []
 
-    decoder = StereochemDecoder()
+    decoder = StereoChemDecoder()
     for smiles in smiles_list:
         try:
             chiral_centers = decoder.detect_chiral_centers(smiles)

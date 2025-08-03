@@ -1,18 +1,18 @@
-## StereochemDecoder
+## StereoChemDecoder
 A Python package to detect chiral centers and E/Z double bonds in SMILES strings using RDKit.
 
 
 ### Installation
 Install the package using pip (RDKit must be installed separately):
 ```bash
-pip install StereochemDecoder
+pip install StereoChemDecoder
 ```
 
 ```python
-from StereochemDecoder import StereochemDecoder
+from StereoChemDecoder import StereoChemDecoder
 
 # Initialize the decoder
-decoder = StereochemDecoder()
+decoder = StereoChemDecoder()
 
 # Detect chiral centers
 chiral_centers = decoder.detect_chiral_centers("CC(C(=O)O)O")  # Lactic Acid

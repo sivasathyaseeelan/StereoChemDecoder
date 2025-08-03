@@ -1,6 +1,6 @@
 from rdkit import Chem
 
-class StereochemDecoder:
+class StereoChemDecoder:
     """A class to detect chiral centers and E/Z double bonds in SMILES strings."""
     
     def __init__(self, smiles_string=None):
