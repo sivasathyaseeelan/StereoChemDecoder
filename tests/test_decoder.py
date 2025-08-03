@@ -328,18 +328,56 @@ def main():
 
     # Test specific SMILES strings
     test_smiles_list = [
-        "CC(F)C(O)C(O)C(=O)O", "c1ccncc1C(=O)[OH]", "CC(Cl)C(O)C(O)[OH]", "C1CCCCC1C(=O)OCC",
-        "c1ccccc1C(Br)C(O)C", "CC(C)C(O)C(O)C(O)C", "CC(C)(C)C(O)C(=O)O", "CC([NH2])C(O)C(O)C",
-        "C1CCCCC1C(F)C(=O)O", "CC(Br)C(O)C(O)C", "CC(C)C(=O)OCC(O)C", "C1CCCCC1C(O)C(O)C",
-        "c1ccccc1C(=O)OCC(O)C", "CC(F)C(Cl)C(O)[OH]", "C/C=C/C(O)C(O)[OH]", "CC(C)C(=O)CC(O)C(O)C",
-        "C1CCCCC1C(=O)CC(O)C", "CC(C)(C)C(O)C(O)C", "CC(F)C(O)C(=O)[OH]", "C1CCCCC1C(O)C(=O)O",
-        "c1ccccc1C(F)C(O)C", "CC(C)C(=O)CC(O)C(=O)O", "CC(Cl)C(=O)OCC(O)C", "CC([NH2])C(O)C(=O)O",
-        "C/C=C\\C(Cl)C(O)C", "C1CCCCC1C(Cl)C(O)C", "CC(C)C(O)C(O)[OH]", "c1ccccc1C([NH2])C(O)C",
-        "CC(C)C(=O)CC(O)[OH]", "C1CCCCC1C(Br)C(O)[OH]", "CC(F)C(Cl)C(=O)O", "C/C=C/C(=O)CC(O)C(O)C",
-        "c1ccccc1C(Cl)C(O)[OH]", "CC(C)(C)C(=O)[NH2]", "CC(Br)C(O)C(O)[OH]", "C1CCCCC1C([NH2])C(O)[OH]",
-        "CC(F)C(=O)OCC(O)C", "CC(C)C(=O)CC(O)C(O)[OH]", "C/C=C/C([NH2])C(=O)O", "c1ccccc1C(=O)CC(O)C(O)C",
-        "CC([NH2])C(O)C(O)[OH]", "C1CCOCC1[NH2]", "CC(C)C(F)C", "CC(Cl)C(O)C(O)C", "C1CCCCC1C(=O)CC(O)[OH]",
-        "CC(C)(C)C(=O)OCC", "C/C=C/C(O)C(=O)[OH]", "CC(F)C([NH2])C(O)C", "CC(C)C(=O)OCC(O)[OH]", "C1CCCCC1[OH]"
+        "CC(C(=O)O)O",              # Lactic acid
+        "C[C@H](O)C(=O)O",         # Lactic acid (explicit chirality)
+        "C/C=C/C",                  # (E)-But-2-ene
+        "C/C=C\\F",                 # (E)-1-Fluoropropene
+        "C/C=C/Cl",                 # (E)-1-Chloropropene
+        "F/C=C/F",                  # (E)-1,2-Difluoroethene
+        "CC(F)C(O)C(O)C(=O)O",     # 2,3-Dihydroxy-4-fluorobutanoic acid
+        "c1ccncc1C(=O)[OH]",       # Nicotinic acid
+        "CC(Cl)C(O)C(O)[OH]",      # 2,3-Dihydroxy-1-chloropropane
+        "C1CCCCC1C(=O)OCC",        # Cyclohexylacetic acid ethyl ester
+        "c1ccccc1C(Br)C(O)C",      # 1-Phenyl-2-bromoethanol
+        "CC(C)C(O)C(O)C(O)C",      # 2,3,4-Trihydroxy-5-methylhexane
+        "CC(C)(C)C(O)C(=O)O",      # 2-Hydroxy-3,3-dimethylbutanoic acid
+        "CC([NH2])C(O)C(O)C",      # 2-Amino-3,4-dihydroxybutane
+        "C1CCCCC1C(F)C(=O)O",      # 1-Cyclohexyl-2-fluoroacetic acid
+        "CC(Br)C(O)C(O)C",         # 2-Bromo-3,4-dihydroxybutane
+        "CC(C)C(=O)OCC(O)C",       # 2-Methylpropanoic acid 2-hydroxyethyl ester
+        "C/C=C/C(O)C(O)[OH]",      # (E)-4,5-Dihydroxypent-2-en-1-ol
+        "CC(F)C(Cl)C(=O)O",        # 2-Fluoro-3-chlorobutanoic acid
+        "C1CCCCC1C(O)C(=O)O",      # 1-Cyclohexyl-2-hydroxyacetic acid
+        "C/C=C\\Br",                # (Z)-1-Bromopropene
+        "F/C=C/Cl",                 # (Z)-1-Fluoro-2-chloroethene
+        "C/C=C/CC",                 # (E)-Pent-2-ene
+        "C/C=C\\CC",                # (Z)-Pent-2-ene
+        "C/C=C/C(=O)O",             # (E)-But-2-enoic acid
+        "C/C=C\\C(=O)O",            # (Z)-But-2-enoic acid
+        "CC=CC",                    # But-1-ene
+        "C/C=C\\C",                # (Z)-But-2-ene
+        "C/C=C/[NH2]",              # (E)-Prop-1-en-1-amine
+        "C/C=C\\Cl",                # (Z)-1-Chloropropene
+        "C/C=C\\C(Cl)C(O)C",       # (Z)-4-Chloro-5-hydroxypent-2-ene
+        "C/C=C/C([NH2])C(=O)O",    # (E)-4-Aminopent-2-enoic acid
+        "C/C=C/C(O)C(=O)O",        # (E)-4-Hydroxypent-2-enoic acid
+        "C/C=C\\C(O)C(O)C",        # (Z)-4,5-Dihydroxypent-2-ene
+        "C/C=C/C(F)C(O)C",         # (E)-4-Fluoro-5-hydroxypent-2-ene
+        "C/C=C\\C(Br)C(O)[OH]",    # (Z)-4-Bromo-5-hydroxypent-2-en-1-ol
+        "C/C=C/C(O)C(O)C(=O)O",    # (E)-4,5-Dihydroxypent-2-enoic acid
+        "C/C=C\\C([NH2])C(O)C",    # (Z)-4-Amino-5-hydroxypent-2-ene
+        "C/C=C/C(Cl)C(O)[OH]",     # (E)-4-Chloro-5-hydroxypent-2-en-1-ol
+        "c1ccccc1",                # Benzene
+        "C1CCCCC1",                # Cyclohexane
+        "CC(=O)O",                 # Acetic acid
+        "CCO",                     # Ethanol
+        "CC(Cl)C(O)C(O)C",         # 2-Chloro-3,4-dihydroxybutane
+        "CC(F)C([NH2])C(O)C",      # 2-Fluoro-3-amino-4-hydroxybutane
+        "CC(C)C(=O)OCC(O)[OH]",    # 2-Methylpropanoic acid 2-hydroxyethanol ester
+        "c1ccccc1C(Cl)C(O)[OH]",   # 1-Phenyl-2-chloroethanol
+        "CC(C)C(O)C(O)C",          # 3,4-Dihydroxy-5-methylhexane
+        "CC([NH2])C(O)C(O)[OH]",   # 2-Amino-3,4-dihydroxypropan-1-ol
+        "c1ccccc1C([NH2])C(O)C"    # 1-Phenyl-2-aminoethanol
     ]
     print("\nTesting specific SMILES strings:")
     for test_smiles in test_smiles_list:
