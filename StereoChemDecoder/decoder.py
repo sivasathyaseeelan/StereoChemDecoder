@@ -37,7 +37,7 @@ class StereoChemDecoder:
             print(f"Error processing SMILES {smiles}: {e}")
             return None
 
-    def detect_chiral_centers(self, smiles_string=None):
+    def detect_chirality(self, smiles_string=None):
         """Detect potential chiral centers in a SMILES string.
         
         Args:

@@ -16,7 +16,7 @@ from StereoChemDecoder import StereoChemDecoder
 decoder = StereoChemDecoder()
 
 # Detect chiral centers
-chiral_centers = decoder.detect_chiral_centers("CC(C(=O)O)O")  # Lactic Acid
+chiral_centers = decoder.detect_chirality("CC(C(=O)O)O")  # Lactic Acid
 print(f"Chiral Centers: {chiral_centers}")  # e.g., [(2, '?')]
 
 # Detect E/Z double bonds

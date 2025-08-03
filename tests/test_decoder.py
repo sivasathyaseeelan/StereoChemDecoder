@@ -269,7 +269,7 @@ def main():
     decoder = StereoChemDecoder()
     for smiles in smiles_list:
         try:
-            chiral_centers = decoder.detect_chiral_centers(smiles)
+            chiral_centers = decoder.detect_chirality(smiles)
             potential_ez = decoder.detect_ez(smiles)
             # Use 'or' condition as per previous code
             if chiral_centers is not None or potential_ez is not None:
@@ -327,11 +327,27 @@ def main():
     print(f"  Molecules with no chiral centers and no E/Z double bonds: {no_chiral_no_ez} ({no_chiral_no_ez/valid_molecules*100:.1f}%)")
 
     # Test specific SMILES strings
+    test_smiles_list = [
+        "CC(F)C(O)C(O)C(=O)O", "c1ccncc1C(=O)[OH]", "CC(Cl)C(O)C(O)[OH]", "C1CCCCC1C(=O)OCC",
+        "c1ccccc1C(Br)C(O)C", "CC(C)C(O)C(O)C(O)C", "CC(C)(C)C(O)C(=O)O", "CC([NH2])C(O)C(O)C",
+        "C1CCCCC1C(F)C(=O)O", "CC(Br)C(O)C(O)C", "CC(C)C(=O)OCC(O)C", "C1CCCCC1C(O)C(O)C",
+        "c1ccccc1C(=O)OCC(O)C", "CC(F)C(Cl)C(O)[OH]", "C/C=C/C(O)C(O)[OH]", "CC(C)C(=O)CC(O)C(O)C",
+        "C1CCCCC1C(=O)CC(O)C", "CC(C)(C)C(O)C(O)C", "CC(F)C(O)C(=O)[OH]", "C1CCCCC1C(O)C(=O)O",
+        "c1ccccc1C(F)C(O)C", "CC(C)C(=O)CC(O)C(=O)O", "CC(Cl)C(=O)OCC(O)C", "CC([NH2])C(O)C(=O)O",
+        "C/C=C\\C(Cl)C(O)C", "C1CCCCC1C(Cl)C(O)C", "CC(C)C(O)C(O)[OH]", "c1ccccc1C([NH2])C(O)C",
+        "CC(C)C(=O)CC(O)[OH]", "C1CCCCC1C(Br)C(O)[OH]", "CC(F)C(Cl)C(=O)O", "C/C=C/C(=O)CC(O)C(O)C",
+        "c1ccccc1C(Cl)C(O)[OH]", "CC(C)(C)C(=O)[NH2]", "CC(Br)C(O)C(O)[OH]", "C1CCCCC1C([NH2])C(O)[OH]",
+        "CC(F)C(=O)OCC(O)C", "CC(C)C(=O)CC(O)C(O)[OH]", "C/C=C/C([NH2])C(=O)O", "c1ccccc1C(=O)CC(O)C(O)C",
+        "CC([NH2])C(O)C(O)[OH]", "C1CCOCC1[NH2]", "CC(C)C(F)C", "CC(Cl)C(O)C(O)C", "C1CCCCC1C(=O)CC(O)[OH]",
+        "CC(C)(C)C(=O)OCC", "C/C=C/C(O)C(=O)[OH]", "CC(F)C([NH2])C(O)C", "CC(C)C(=O)OCC(O)[OH]", "C1CCCCC1[OH]"
+    ]
     print("\nTesting specific SMILES strings:")
-    for test_smiles in ["CC(C(=O)O)O", "C[C@H](O)C(=O)O"]:
-        chiral_centers = decoder.detect_chiral_centers(test_smiles)
+    for test_smiles in test_smiles_list:
+        chiral_centers = decoder.detect_chirality(test_smiles)
         ez_bonds = decoder.detect_ez(test_smiles)
-        print(f"{test_smiles}: {chiral_centers} : {ez_bonds}")
+        print(f"Testing {test_smiles}")
+        print(f"  Chirality       : {chiral_centers}")
+        print(f"  E/Z double bond : {ez_bonds}")
 
 if __name__ == "__main__":
     main()
